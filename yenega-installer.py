@@ -62,10 +62,9 @@ def main():
         print(f"Invalid command: {command}")
         return
 
-    # Check if the project already exists
-    if os.path.exists(project_name):
-        print(f"Error: Project '{project_name}' already exists.")
-        return
+    # Set the PYTHONPATH environment variable
+    current_directory = os.getcwd()
+    os.environ['PYTHONPATH'] = current_directory
 
     # GitHub repository URL for framework files
     framework_files_url = "https://github.com/baowendnere/yenega.git"
