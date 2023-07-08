@@ -3,7 +3,6 @@ import os
 import subprocess
 import sys
 import importlib
-import requests
 from requests.exceptions import RequestException
 
 def clone_repository(url, destination):
