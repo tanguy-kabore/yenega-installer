@@ -16,7 +16,7 @@ Assurez-vous que les éléments suivants sont installés sur votre système avan
 ### 1. Cloner le Projet Yenega
 
 ```bash
-    git clone https://gitlab.com/yenega/yenega-installer.git
+git clone https://gitlab.com/yenega/yenega-installer.git
 ```
 
 ### 2. Exécution de l'Installateur
@@ -24,7 +24,7 @@ Assurez-vous que les éléments suivants sont installés sur votre système avan
 Utilisez le script [yenega-installer.py](https://gitlab.com/yenega/yenega-installer.git) pour créer un nouveau projet Yenega. Assurez-vous d'être dans le répertoire où vous souhaitez créer votre projet.
 
 ```bash
-    python path/vers/yenega-installer.py new NomDuProjet
+python path/vers/yenega-installer.py new NomDuProjet
 ```
 Remplacez **path/vers/yenega-installer.py** par le chemin d'accès réel vers le script yenega-installer.py sur votre système.
 
@@ -32,9 +32,9 @@ Remplacez **path/vers/yenega-installer.py** par le chemin d'accès réel vers le
 
 L'installateur vous guidera à travers les étapes nécessaires à la création du projet :
 
-    * Clonage du framework Yenega
-    * Création de l'environnement virtuel
-    * Installation des dépendances
+- Clonage du framework Yenega
+- Création de l'environnement virtuel
+- Installation des dépendances
 
 ### 4. Activation de l'Environnement Virtuel (si nécessaire)
 
@@ -42,11 +42,11 @@ Si l'activation automatique de l'environnement virtuel ne fonctionne pas, active
 
 **Sur Windows :**
 ```bash
-    .\NomDuProjet\venv\Scripts\activate
+.\NomDuProjet\venv\Scripts\activate
 ```
 **Sur Linux/macOS :**
 ```bash
-    source NomDuProjet/venv/bin/activate
+source NomDuProjet/venv/bin/activate
 ```
 ## Problèmes Connus
 
@@ -55,3 +55,5 @@ Si vous rencontrez des problèmes lors de l'installation ou si des dépendances 
 ## Contributions
 
 Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md]() pour obtenir des informations sur la manière de contribuer au projet.
+
+&copy; 2024 [B. Tanguy KABORE]
