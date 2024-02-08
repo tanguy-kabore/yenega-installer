@@ -33,6 +33,10 @@ Pour plus de détails, Vous pouvez utiliser la commande d'aide:
 python path/vers/yenega-installer.py --help
 ```
 
+**Remarque:**
+
+Le script **yenega-installer.py** gère automatiquement l'installation des dépendances requises pour le projet. Lorsque vous créez un nouveau projet. Il clonera le framework Yenega, créera un environnement virtuel et installera les dépendances nécessaires telles que `mysql-connector-python` et `Pillow`. Si vous voyez des avertissements lors de l'installation des dépendances, vous pouvez les ignorer tant que le script signale finalement que le projet a été créé avec succès.
+
 ### 3. Suivez les Instructions
 
 L'installateur vous guidera à travers les étapes nécessaires à la création du projet :
