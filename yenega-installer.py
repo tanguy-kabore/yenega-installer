@@ -66,7 +66,7 @@ def main():
     os.environ['PYTHONPATH'] = current_directory
 
     # GitHub repository URL for framework files
-    framework_files_url = "https://github.com/baowendnere/yenega.git"
+    framework_files_url = "https://gitlab.com/yenega/yenega.git"
 
     # Create the project folder and clone the framework repository
     create_project(project_name, framework_files_url)
