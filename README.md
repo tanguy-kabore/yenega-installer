@@ -56,4 +56,6 @@ Si vous rencontrez des problèmes lors de l'installation ou si des dépendances 
 
 Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md]() pour obtenir des informations sur la manière de contribuer au projet.
 
-&copy; 2024 [B. Tanguy KABORE]
+***
+
+&copy; 2024 [**B. Tanguy KABORE**]
