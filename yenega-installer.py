@@ -54,7 +54,6 @@ def main():
     parser = argparse.ArgumentParser(description="Yenega Installer")
     parser.add_argument("command", choices=["new"], help="Specify the command to perform.")
     parser.add_argument("project_name", help="Specify the project name.")
-    parser.add_argument("--help", action="help", help="Show this help message and exit.")
 
     args = parser.parse_args()
 
