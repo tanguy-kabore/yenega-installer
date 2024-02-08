@@ -27,6 +27,11 @@ Utilisez le script [yenega-installer.py](https://gitlab.com/yenega/yenega-instal
 python path/vers/yenega-installer.py new NomDuProjet
 ```
 Remplacez **path/vers/yenega-installer.py** par le chemin d'accès réel vers le script yenega-installer.py sur votre système.
+Pour plus de détails, Vous pouvez utiliser la commande d'aide:
+
+```bash
+python path/vers/yenega-installer.py --help
+```
 
 ### 3. Suivez les Instructions
 
