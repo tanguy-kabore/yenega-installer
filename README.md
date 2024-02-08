@@ -58,4 +58,4 @@ Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md]() pour obten
 
 ***
 
-&copy; 2024 [**B. Tanguy KABORE**]
+&copy; 2024 [**B. Tanguy KABORE**](https://www.linkedin.com/in/kabore-tanguy-96ab94298/)
