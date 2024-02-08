@@ -4,6 +4,7 @@ import subprocess
 import sys
 import importlib
 from requests.exceptions import RequestException
+import argparse
 
 def clone_repository(url, destination):
     try:
@@ -50,12 +51,15 @@ def setup_virtual_environment(project_name):
         raise
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python yenega-installer.py new <project_name>")
-        return
+    parser = argparse.ArgumentParser(description="Yenega Installer")
+    parser.add_argument("command", choices=["new"], help="Specify the command to perform.")
+    parser.add_argument("project_name", help="Specify the project name.")
+    parser.add_argument("--help", action="help", help="Show this help message and exit.")
 
-    command = sys.argv[1]
-    project_name = sys.argv[2]
+    args = parser.parse_args()
+
+    command = args.command
+    project_name = args.project_name
 
     if command != "new":
         print(f"Invalid command: {command}")
