@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Bienvenue dans le projet Yenega ! Ce projet utilise un installateur Python pour simplifier le processus de création d'un nouveau projet basé sur le framework Yenega.
+Bienvenue dans le projet Yenega ! Ce projet utilise un installateur Python pour simplifier le processus de création d'un nouveau projet basé sur le framework [Yenega](https://gitlab.com/yenega/yenega).
 
 ## Prérequis
 
