@@ -6,11 +6,23 @@ import importlib
 from requests.exceptions import RequestException
 import argparse
 
+# Define ANSI escape codes for colors
+class Colors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 def clone_repository(url, destination):
     try:
         subprocess.run(["git", "clone", url, destination], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Error occurred during git clone: {e}")
+        print(f"{Colors.FAIL}Error occurred during git clone: {e}{Colors.ENDC}")
         raise
 
 def create_project(project_name, framework_files_url):
@@ -21,7 +33,7 @@ def create_project(project_name, framework_files_url):
     try:
         clone_repository(framework_files_url, project_name)
     except subprocess.CalledProcessError:
-        print("Failed to clone the framework repository. Aborting.")
+        print(f"{Colors.FAIL}Failed to clone the framework repository. Aborting.{Colors.ENDC}")
         return
 
 def install_dependencies(project_name):
@@ -39,7 +51,7 @@ def install_dependencies(project_name):
         try:
             subprocess.run(["python", "-m", "pip", "install"] + missing_dependencies, check=True)
         except subprocess.CalledProcessError as e:
-            print(f"Error occurred during dependency installation: {e}")
+            print(f"{Colors.FAIL}Error occurred during dependency installation: {e}{Colors.ENDC}")
             return
 
 def setup_virtual_environment(project_name):
@@ -47,7 +59,7 @@ def setup_virtual_environment(project_name):
         # Create a virtual environment using the 'venv' module
         subprocess.run(["python", "-m", "venv", os.path.join(project_name, "venv")], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"Error occurred during virtual environment setup: {e}")
+        print(f"{Colors.FAIL}Error occurred during virtual environment setup: {e}{Colors.ENDC}")
         raise
 
 def main():
@@ -61,7 +73,7 @@ def main():
     project_name = args.project_name
 
     if command != "new":
-        print(f"Invalid command: {command}")
+        print(f"{Colors.FAIL}Invalid command: {command}{Colors.ENDC}")
         return
 
     # Set the PYTHONPATH environment variable
@@ -78,17 +90,17 @@ def main():
     try:
         setup_virtual_environment(project_name)
     except subprocess.CalledProcessError:
-        print("Failed to set up the virtual environment. Aborting.")
+        print(f"{Colors.FAIL}Failed to set up the virtual environment. Aborting.{Colors.ENDC}")
         return
 
     # Install dependencies
     try:
         install_dependencies(project_name)
     except RequestException as e:
-        print(f"Error occurred during dependency installation: {e}")
+        print(f"{Colors.FAIL}Error occurred during dependency installation: {e}{Colors.ENDC}")
         return
 
-    print(f"Created new project: {project_name}")
+    print(f"{Colors.OKGREEN}Created new project: {project_name}{Colors.ENDC}")
 
 if __name__ == "__main__":
     main()
