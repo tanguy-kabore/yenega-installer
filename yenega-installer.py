@@ -62,13 +62,13 @@ def setup_virtual_environment(project_name):
         print(f"{Colors.FAIL}Error occurred during virtual environment setup: {e}{Colors.ENDC}")
         raise
 
-def update_code(project_name):
-    print(f"Updating the code for project: {project_name} ...")
+def update_installer(installer_path):
     try:
-        subprocess.check_output(['git', 'pull'], cwd=project_name)
-        print(f"{Colors.OKGREEN}Code updated successfully.{Colors.ENDC}")
+        subprocess.run(["git", "pull"], cwd=installer_path, check=True)
+        print(f"{Colors.OKGREEN}Installer updated successfully.{Colors.ENDC}")
     except subprocess.CalledProcessError as e:
-        print(f"{Colors.FAIL}Error updating code: {e}{Colors.ENDC}")
+        print(f"{Colors.FAIL}Error occurred during installer update: {e}{Colors.ENDC}")
+        raise
 
 def main():
     parser = argparse.ArgumentParser(description="Yenega Installer")
@@ -108,7 +108,9 @@ def main():
         print(f"{Colors.OKGREEN}Created new project: {project_name}{Colors.ENDC}")
 
     elif command == "update":
-        update_code(project_name)
+        current_directory = os.getcwd()
+        update_installer(current_directory)
+        return
 
     else:
         print(f"{Colors.FAIL}Invalid command: {command}{Colors.ENDC}")
