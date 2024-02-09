@@ -18,6 +18,13 @@ class Colors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+def check_git():
+    try:
+        subprocess.run(["git", "--version"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    except FileNotFoundError:
+        print(f"{Colors.FAIL}Git is not installed. Please install Git and try again.{Colors.ENDC}")
+        sys.exit(1)
+
 def clone_repository(url, destination):
     try:
         subprocess.run(["git", "clone", url, destination], check=True)
@@ -73,47 +80,50 @@ def update_installer(installer_path):
 def main():
     parser = argparse.ArgumentParser(description="Yenega Installer")
     parser.add_argument("command", choices=["new", "update"], help="Specify the command to perform.")
-    parser.add_argument("project_name", help="Specify the project name.")
+    parser.add_argument("project_name", nargs="?", help="Specify the project name.")
 
     args = parser.parse_args()
 
     command = args.command
     project_name = args.project_name
 
-    if command == "new":
-        # Set the PYTHONPATH environment variable
-        current_directory = os.getcwd()
-        os.environ['PYTHONPATH'] = current_directory
-
-        # GitHub repository URL for framework files
-        framework_files_url = "https://gitlab.com/yenega/yenega.git"
-
-        # Create the project folder and clone the framework repository
-        create_project(project_name, framework_files_url)
-
-        # Set up the virtual environment
-        try:
-            setup_virtual_environment(project_name)
-        except subprocess.CalledProcessError:
-            print(f"{Colors.FAIL}Failed to set up the virtual environment. Aborting.{Colors.ENDC}")
-            return
-
-        # Install dependencies
-        try:
-            install_dependencies(project_name)
-        except RequestException as e:
-            print(f"{Colors.FAIL}Error occurred during dependency installation: {e}{Colors.ENDC}")
-            return
-
-        print(f"{Colors.OKGREEN}Created new project: {project_name}{Colors.ENDC}")
-
-    elif command == "update":
+    if command == "update":
+        check_git()  # Check if Git is installed
         current_directory = os.getcwd()
         update_installer(current_directory)
         return
 
-    else:
+    if command != "new":
         print(f"{Colors.FAIL}Invalid command: {command}{Colors.ENDC}")
+        return
+
+    check_git()  # Check if Git is installed
+
+    # Set the PYTHONPATH environment variable
+    current_directory = os.getcwd()
+    os.environ['PYTHONPATH'] = current_directory
+
+    # GitHub repository URL for framework files
+    framework_files_url = "https://gitlab.com/yenega/yenega.git"
+
+    # Create the project folder and clone the framework repository
+    create_project(project_name, framework_files_url)
+
+    # Set up the virtual environment
+    try:
+        setup_virtual_environment(project_name)
+    except subprocess.CalledProcessError:
+        print(f"{Colors.FAIL}Failed to set up the virtual environment. Aborting.{Colors.ENDC}")
+        return
+
+    # Install dependencies
+    try:
+        install_dependencies(project_name)
+    except RequestException as e:
+        print(f"{Colors.FAIL}Error occurred during dependency installation: {e}{Colors.ENDC}")
+        return
+
+    print(f"{Colors.OKGREEN}Created new project: {project_name}{Colors.ENDC}")
 
 if __name__ == "__main__":
     main()
