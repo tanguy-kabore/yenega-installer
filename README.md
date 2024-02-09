@@ -57,6 +57,15 @@ Si l'activation automatique de l'environnement virtuel ne fonctionne pas, active
 ```bash
 source NomDuProjet/venv/bin/activate
 ```
+
+### 5. Mise à jour des Dépendances
+
+Pour mettre à jour l'installateur, exécutez la commande suivante :
+
+```bash
+python path/vers/yenega-installer.py update
+```
+
 ## Problèmes Connus
 
 Si vous rencontrez des problèmes lors de l'installation ou si des dépendances échouent, veuillez consulter les sections "Problèmes Courants" ou "Contributions" dans le fichier [CONTRIBUTING.md]() pour obtenir de l'aide.
