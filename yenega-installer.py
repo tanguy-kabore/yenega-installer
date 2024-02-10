@@ -50,7 +50,7 @@ def install_dependencies(project_name):
     subprocess.run(activate_env_command, shell=True)
 
     # Check if the dependencies are already installed in the system or virtual environment
-    dependencies = ["mysql-connector-python", "Pillow"]
+    dependencies = ["mysql-connector-python", "Pillow", "clamd"]
     missing_dependencies = [dep for dep in dependencies if importlib.util.find_spec(dep) is None]
 
     # Install missing dependencies using pip in the virtual environment
