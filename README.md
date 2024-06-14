@@ -51,11 +51,11 @@ Si l'activation automatique de l'environnement virtuel ne fonctionne pas, active
 
 **Sur Windows :**
 ```bash
-.\NomDuProjet\venv\Scripts\activate
+.\venv\Scripts\activate
 ```
 **Sur Linux/macOS :**
 ```bash
-source NomDuProjet/venv/bin/activate
+source /venv/bin/activate
 ```
 
 ### 5. Mise à jour des Dépendances
